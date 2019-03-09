@@ -3,14 +3,12 @@
 #include<string.h>
 #include<stdlib.h>
 #include<stdbool.h>
-
 // Contacts structure
 struct contact {
     char name[40];
     char address[40];
     long long int phoneNumber;
     char email[40];
-
 };
 
 //Functions List
@@ -22,8 +20,8 @@ void listRecords();
 void searchRecords();
 
 //filename in a variable if I want to change it later
-char fname[]={"records"};
-char ftempname[]={"temp"};
+char fname[]={"records.dll"};
+char ftempname[]={"temp.dll"};
 
 //__main__
 int main(){
@@ -48,8 +46,8 @@ void mainMenu(){
 
     printf("\t\t\t\t\t\tMAIN MENU\n");
     printf("\t\t1.Add New Contact\t2.Edit Existing Contact\t\t3.Delete Contact\n");
-    printf("\t\t4.Search Contact\t5.List All Contacts\t\t6.Exit Program\n");
-    printf("Choose options by pressing their respective numbers!\n");
+    printf("\t\t4.Search Contact\t5.List All Contacts\t\t6.Exit Program\n\n");
+    printf("\t\t\tChoose options by pressing their respective numbers!\n");
     
     switch(getch()){
         case '1': addRecord();
@@ -66,7 +64,7 @@ void mainMenu(){
                   break;
         default:
             printf("Press 1-6 only!!");
-            printf("\nEnter any key to try again.");
+            printf("\nPress any key to try again.");
             getch();
     
     mainMenu();
@@ -88,7 +86,7 @@ void addRecord(){
     scanf("%[^\n]",&c.name);// so it looks like the %[^\n] waits until I press Enter to save the data so the last name doesnt get lost or overflow
     fflush(stdin); //apparently clears buffer so no value overflows, solved my problem so whatever 
     printf("\nEnter address: ");
-    scanf("%s",&c.address);
+    scanf("%[^\n]",&c.address);
     fflush(stdin);
     printf("\nEnter phone number: ");
     scanf("%lld",&c.phoneNumber);
@@ -101,7 +99,7 @@ void addRecord(){
     fclose(f);
     
     printf("\nRecord Saved!");
-    printf("\nEnter any key to go back!");
+    printf("\nPress any key to go back!");
     getch();
     
     mainMenu();
@@ -120,17 +118,18 @@ void listRecords(){
         printf("\nERROR OPENING FILE, THE RECORD FILE DOES NOT EXIST!!!");
         getch();
         mainMenu();  
-    }
-    
-    printf("=======Contacts===========\n\n ");
-    
-    while(fread(&c,sizeof(c),1,f)==1){ //okay this reads the file until it reaches the end, and when it does its return value is 0.
-    printf("\nName: %s\nAddress: %s\nMobile no: %lld\nE-mail: %s\n\n",c.name,c.address,c.phoneNumber,c.email);
+    }else{
+        printf("\t\t\t========================================\n");
+        printf("\t\t\t\t\tContacts\n");
+        printf("\t\t\t========================================\n");
+        while(fread(&c,sizeof(c),1,f)==1){ //okay this reads the file until it reaches the end, and when it does its return value is 0.
+        printf("\n\t\t\t\tName: %s\n\t\t\t\tAddress: %s\n\t\t\t\tMobile no: %lld\n\t\t\t\tE-mail: %s\n\n\t\t\t\t\t  --\n\n",c.name,c.address,c.phoneNumber,c.email);
+        }
     }
     
     fclose(f);
     
-    printf("\nEnter any key to go back!");
+    printf("\nPress any key to go back!");
     getch();
     mainMenu();
 }
@@ -174,7 +173,7 @@ void delRecord(){
         printf("\t\tRECORD DELETED SUCCESSFULLY.");
     }
    
-    printf("\n\nEnter any key to go back!");
+    printf("\n\nPress any key to go back!");
     getch();
     system("cls");
     
@@ -188,7 +187,7 @@ void editRecord(){
 
     system("cls");
     
-    printf("\t\tDELETE CONTACT\n");
+    printf("\t\tEDIT CONTACT\n");
     fflush(stdin);
     
     struct contact c;
@@ -234,7 +233,7 @@ void editRecord(){
     remove(fname);
     rename(ftempname,fname);
 
-    printf("\n\nEnter any key to go back!");
+    printf("\n\nPress any key to go back!");
     getch();
     system("cls");
     
@@ -269,7 +268,7 @@ void searchRecords(){
     }
 
     fclose(fp);
-    printf("\n\nEnter any key to go back!");
+    printf("\n\nPress any key to go back!");
 
     getch();
     mainMenu();
