@@ -34,7 +34,7 @@ int main(){
                         4 = Red     C = Light Red
                         5 = Purple  D = Light Purple
                         6 = Yellow  E = Light Yellow
-                        7 = White   F = Bright White
+                        7 = White   F = Bright White 
                         */
    mainMenu();
    return 0;
