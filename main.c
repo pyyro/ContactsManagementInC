@@ -245,6 +245,7 @@ void editRecord(){
 //Searching contacts
 void searchRecords(){
     char name[20];
+    int found;
     
     struct contact c;
     
@@ -260,14 +261,17 @@ void searchRecords(){
 
     while (fread( &c,sizeof(c),1,fp)==1){
         if (strcmp(c.name,name)==0){
-        printf("\n\tInfo about: %s",name);
-        printf("\nName: %s\nAddress: %s\nMobile no: %lld\nE-mail: %s\n\n",c.name,c.address,c.phoneNumber,c.email);
-        }else{
-        printf("\nThe contact does not exist.");
+            found = 1;
+            printf("\n\tInfo about: %s",name);
+            printf("\nName: %s\nAddress: %s\nMobile no: %lld\nE-mail: %s\n\n",c.name,c.address,c.phoneNumber,c.email);
+            break;
         }
     }
 
     fclose(fp);
+    if (found!=1){
+        printf("No contact matches for that name!");
+    }
     printf("\n\nPress any key to go back!");
 
     getch();
