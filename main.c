@@ -25,7 +25,7 @@ char ftempname[]={"temp.dll"};
 
 //__main__
 int main(){
-    system("color 06"); //colours woooooaaaahhh!!!!
+    system("color 06"); 
                         /* First X for background, second for foreground.
                         0 = Black   8 = Gray
                         1 = Blue    9 = Light Blue
@@ -135,6 +135,13 @@ void listRecords(){
 }
 
 //Deleting Contacts
+/*
+-Ask for a name to delete.
+-Read the file for the name.
+-Write every other record in a temp file, except for that one match.
+-Replace the temp file with the new file, which contains every record but the one matched.
+-Contact Deleted!
+*/
 void delRecord(){
     char name[20];
     int recordExists;
@@ -181,6 +188,13 @@ void delRecord(){
 }
 
 //Editing Contacts
+/*
+-Similar to deleting record, ask for a name, check for matches
+-Write every unmatch in a temp file.
+-When matched, ask for new info and write the new info in the temp file.
+-Replace original file with the temp file.
+-Contact modified!
+*/
 void editRecord(){
     char name[20];
     int found;
