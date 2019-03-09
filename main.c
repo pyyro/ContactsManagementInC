@@ -25,7 +25,7 @@ char ftempname[]={"temp.dll"};
 
 //__main__
 int main(){
-    system("color 06"); 
+    system("color 06"); //colours wwoahh!!
                         /* First X for background, second for foreground.
                         0 = Black   8 = Gray
                         1 = Blue    9 = Light Blue
