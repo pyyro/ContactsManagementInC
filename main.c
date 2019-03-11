@@ -122,7 +122,7 @@ void listRecords(){
         printf("\t\t\t========================================\n");
         printf("\t\t\t\t\tContacts\n");
         printf("\t\t\t========================================\n");
-        while(fread(&c,sizeof(c),1,f)==1){ //okay this reads the file until it reaches the end, and when it does its return value is 0.
+        while(fread(&c,sizeof(c),1,f)==1){ //okay this reads the file until it reaches the end, and when it does its return value is (i don't know).
         printf("\n\t\t\t\tName: %s\n\t\t\t\tAddress: %s\n\t\t\t\tMobile no: %lld\n\t\t\t\tE-mail: %s\n\n\t\t\t\t\t  --\n\n",c.name,c.address,c.phoneNumber,c.email);
         }
     }
